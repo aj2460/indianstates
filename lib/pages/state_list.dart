@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:indianstates/pages/state_details.dart';
 
 List<Map<String, String>> states = [
-  {'state': "Andhra Pradesh", 'capital': 'Amaravati', 'pic': 'Andhra.png'},
+  {
+    'index': '01',
+    'state': "Andhra Pradesh",
+    'capital': 'Amaravati',
+    'pic': 'Andhra.png'
+  },
   {'state': "Arunachal Pradesh", 'capital': 'Itanagar', 'pic': 'Arunachal.png'},
   {'state': "Assam", 'capital': 'Dispur', 'pic': 'Assam.png'},
   {'state': "Bihar", 'capital': 'Patna', 'pic': 'Bihar.png'},
@@ -51,7 +57,7 @@ class _StateListState extends State<StateList> {
   @override
   Widget build(BuildContext context) {
     //   print(picName);
-    return Container(
+    return SafeArea(
       child: Column(
         children: [
           Flexible(
@@ -69,6 +75,18 @@ class _StateListState extends State<StateList> {
                   color: Colors.blueGrey[900],
                   margin: EdgeInsets.fromLTRB(12, 8, 12, 2),
                   child: ListTile(
+                    trailing: TextButton.icon(
+                        onPressed: () {
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => StateDetails()));
+
+                          Navigator.pushNamed(context, '/details',
+                              arguments: {'index': states[idx]['index']});
+                        },
+                        icon: Icon(Icons.adjust_outlined),
+                        label: Text("...")),
                     onTap: () {
                       setState(() {
                         picName = states[idx]['pic'] ?? "Error loading state";
