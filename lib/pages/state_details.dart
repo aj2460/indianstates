@@ -8,6 +8,12 @@ class StateDetails extends StatefulWidget {
 }
 
 class _StateDetailsState extends State<StateDetails> {
+  String prefix = 'assets/images/st_images/';
+  List<List<String>> stImages = [
+    ['assets/images/st_images/01-01.jpg', 'assets/images/st_images/01-02.jpg'],
+    ['assets/images/st_images/02-01.jpg', 'assets/images/st_images/02-02.jpg'],
+  ];
+
   List<Map<String, String>> stDetails = [
     {
       '01':
@@ -88,8 +94,9 @@ class _StateDetailsState extends State<StateDetails> {
           child: Column(
             children: [
               ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  child: Image.asset('assets/images/st_images/$sidx-01.jpg')),
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                child: Image.asset('assets/images/st_images/$sidx-01.jpg'),
+              ),
               SizedBox(
                 height: 10,
               ),
