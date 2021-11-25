@@ -14,9 +14,144 @@ class _StateDetailsState extends State<StateDetails> {
     [
       'assets/images/st_images/01-01.jpg',
       'assets/images/st_images/01-02.jpg',
-      'assets/images/st_images/01-03.jpg'
+      'assets/images/st_images/01-03.jpg',
+      'assets/images/st_images/01-04.jpg'
     ],
-    ['assets/images/st_images/02-01.jpg', 'assets/images/st_images/02-02.jpg'],
+    [
+      'assets/images/st_images/02-01.jpg',
+      'assets/images/st_images/02-02.jpg',
+      'assets/images/st_images/02-03.jpg'
+    ],
+    [
+      'assets/images/st_images/03-01.jpg',
+      'assets/images/st_images/03-02.jpg',
+      'assets/images/st_images/03-03.jpg'
+    ],
+    [
+      'assets/images/st_images/04-01.jpg',
+      'assets/images/st_images/04-02.jpg',
+      'assets/images/st_images/04-03.jpg'
+    ],
+    [
+      'assets/images/st_images/05-01.jpg',
+      'assets/images/st_images/05-02.jpg',
+      'assets/images/st_images/05-03.jpg'
+    ],
+    [
+      'assets/images/st_images/06-01.jpg',
+      'assets/images/st_images/06-02.jpg',
+      'assets/images/st_images/06-03.jpg'
+    ],
+    [
+      'assets/images/st_images/07-01.jpg',
+      'assets/images/st_images/07-02.jpg',
+      'assets/images/st_images/07-03.jpg'
+    ],
+    [
+      'assets/images/st_images/08-01.jpg',
+      'assets/images/st_images/08-02.jpg',
+      'assets/images/st_images/08-03.jpg'
+    ],
+    [
+      'assets/images/st_images/09-01.jpg',
+      'assets/images/st_images/09-02.jpg',
+      'assets/images/st_images/09-03.jpg'
+    ],
+    [
+      'assets/images/st_images/10-01.jpg',
+      'assets/images/st_images/10-02.jpg',
+      'assets/images/st_images/10-03.jpg'
+    ],
+    [
+      'assets/images/st_images/11-01.jpg',
+      'assets/images/st_images/11-02.jpg',
+      'assets/images/st_images/11-03.jpg'
+    ],
+    [
+      'assets/images/st_images/12-01.jpg',
+      'assets/images/st_images/12-02.jpg',
+      'assets/images/st_images/12-03.jpg'
+    ],
+    [
+      'assets/images/st_images/13-01.jpg',
+      'assets/images/st_images/13-02.jpg',
+      'assets/images/st_images/13-03.jpg'
+    ],
+    [
+      'assets/images/st_images/14-01.jpg',
+      'assets/images/st_images/14-02.jpg',
+      'assets/images/st_images/14-03.jpg'
+    ],
+    [
+      'assets/images/st_images/15-01.jpg',
+      'assets/images/st_images/15-02.jpg',
+      'assets/images/st_images/15-03.jpg'
+    ],
+    [
+      'assets/images/st_images/16-01.jpg',
+      'assets/images/st_images/16-02.jpg',
+      'assets/images/st_images/16-03.jpg'
+    ],
+    [
+      'assets/images/st_images/17-01.jpg',
+      'assets/images/st_images/17-02.jpg',
+      'assets/images/st_images/17-03.jpg'
+    ],
+    [
+      'assets/images/st_images/18-01.jpg',
+      'assets/images/st_images/18-02.jpg',
+      'assets/images/st_images/18-03.jpg'
+    ],
+    [
+      'assets/images/st_images/19-01.jpg',
+      'assets/images/st_images/19-02.jpg',
+      'assets/images/st_images/19-03.jpg'
+    ],
+    [
+      'assets/images/st_images/20-01.jpg',
+      'assets/images/st_images/20-02.jpg',
+      'assets/images/st_images/20-03.jpg'
+    ],
+    [
+      'assets/images/st_images/21-01.jpg',
+      'assets/images/st_images/21-02.jpg',
+      'assets/images/st_images/21-03.jpg'
+    ],
+    [
+      'assets/images/st_images/22-01.jpg',
+      'assets/images/st_images/22-02.jpg',
+      'assets/images/st_images/22-03.jpg'
+    ],
+    [
+      'assets/images/st_images/23-01.jpg',
+      'assets/images/st_images/23-02.jpg',
+      'assets/images/st_images/23-03.jpg'
+    ],
+    [
+      'assets/images/st_images/24-01.jpg',
+      'assets/images/st_images/24-02.jpg',
+      'assets/images/st_images/24-03.jpg'
+    ],
+    [
+      'assets/images/st_images/25-01.jpg',
+      'assets/images/st_images/25-02.jpg',
+      'assets/images/st_images/25-03.jpg'
+    ],
+    [
+      'assets/images/st_images/26-01.jpg',
+      'assets/images/st_images/26-02.jpg',
+      'assets/images/st_images/26-03.jpg'
+    ],
+    [
+      'assets/images/st_images/27-01.jpg',
+      'assets/images/st_images/27-02.jpg',
+      'assets/images/st_images/27-03.jpg'
+    ],
+    [
+      'assets/images/st_images/28-01.jpg',
+      'assets/images/st_images/28-02.jpg',
+      'assets/images/st_images/28-03.jpg'
+    ],
   ];
 
   List<Map<String, String>> stDetails = [
@@ -81,13 +216,12 @@ class _StateDetailsState extends State<StateDetails> {
   ];
 
   Widget buildImage(String urlImage, int index) {
-    return ClipRRect(
-      borderRadius: BorderRadius.all(Radius.circular(12)),
-      child: Container(
-        color: Colors.grey,
-        margin: EdgeInsets.all(8),
-        child: Image.asset(
-          urlImage,
+    return Container(
+      margin: EdgeInsets.all(6.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16.0),
+        image: DecorationImage(
+          image: AssetImage(urlImage),
           fit: BoxFit.cover,
         ),
       ),
@@ -113,13 +247,18 @@ class _StateDetailsState extends State<StateDetails> {
           child: Column(
             children: [
               CarouselSlider.builder(
-                  itemCount: stImages[idx].length,
-                  itemBuilder: (context, index, realIndex) {
-                    print('no of images : ${stImages[idx].length}');
-                    final urlImage = stImages[idx][index];
-                    return buildImage(urlImage, index);
-                  },
-                  options: CarouselOptions(height: 300)),
+                itemCount: stImages[idx].length,
+                itemBuilder: (context, index, realIndex) {
+                  print('no of images : ${stImages[idx].length}');
+                  final urlImage = stImages[idx][index];
+                  return buildImage(urlImage, index);
+                },
+                options: CarouselOptions(
+                  height: 300,
+                  //viewportFraction: 1,
+                  enlargeCenterPage: true,
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
