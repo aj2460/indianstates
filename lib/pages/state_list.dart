@@ -8,15 +8,21 @@ List<Map<String, String>> states = [
     'capital': 'Amaravati',
     'pic': 'Andhra.png'
   },
-  {'state': "Arunachal Pradesh", 'capital': 'Itanagar', 'pic': 'Arunachal.png'},
-  {'state': "Assam", 'capital': 'Dispur', 'pic': 'Assam.png'},
-  {'state': "Bihar", 'capital': 'Patna', 'pic': 'Bihar.png'},
   {
+    'index': '02',
+    'state': "Arunachal Pradesh",
+    'capital': 'Itanagar',
+    'pic': 'Arunachal.png'
+  },
+  {'index': '03', 'state': "Assam", 'capital': 'Dispur', 'pic': 'Assam.png'},
+  {'index': '04', 'state': "Bihar", 'capital': 'Patna', 'pic': 'Bihar.png'},
+  {
+    'index': '05',
     'state': "Chhattisgarh",
     'capital': 'Naya Raipur',
     'pic': 'Chhattisgarh.png'
   },
-  {'state': "Goa", 'capital': 'Panaji', 'pic': 'Goa.png'},
+  {'index': '06', 'state': "Goa", 'capital': 'Panaji', 'pic': 'Goa.png'},
   {'state': "Gujarat", 'capital': 'Gandhinagar', 'pic': 'Gujarat.png'},
   {'state': "Haryana", 'capital': 'Chandigarh', 'pic': 'Haryana.png'},
   {'state': "Himachal Pradesh", 'capital': 'Shimla', 'pic': 'Himachal.png'},
@@ -54,6 +60,7 @@ class StateList extends StatefulWidget {
 
 class _StateListState extends State<StateList> {
   var picName = "Andhra.png";
+  int tapIndex = 0;
   @override
   Widget build(BuildContext context) {
     //   print(picName);
@@ -75,21 +82,19 @@ class _StateListState extends State<StateList> {
                   color: Colors.blueGrey[900],
                   margin: EdgeInsets.fromLTRB(12, 8, 12, 2),
                   child: ListTile(
-                    trailing: TextButton.icon(
-                        onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => StateDetails()));
-
-                          Navigator.pushNamed(context, '/details',
-                              arguments: {'index': states[idx]['index']});
-                        },
-                        icon: Icon(Icons.adjust_outlined),
-                        label: Text("...")),
+                    trailing: tapIndex == idx
+                        ? TextButton.icon(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/details',
+                                  arguments: {'index': states[idx]['index']});
+                            },
+                            icon: Icon(Icons.adjust_outlined),
+                            label: Text(">"))
+                        : Text(">"),
                     onTap: () {
                       setState(() {
                         picName = states[idx]['pic'] ?? "Error loading state";
+                        tapIndex = idx;
                       });
                     },
                     leading: Padding(
@@ -117,3 +122,9 @@ class _StateListState extends State<StateList> {
     );
   }
 }
+
+
+ // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => StateDetails()));
