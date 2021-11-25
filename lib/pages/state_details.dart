@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class StateDetails extends StatefulWidget {
@@ -10,7 +11,11 @@ class StateDetails extends StatefulWidget {
 class _StateDetailsState extends State<StateDetails> {
   String prefix = 'assets/images/st_images/';
   List<List<String>> stImages = [
-    ['assets/images/st_images/01-01.jpg', 'assets/images/st_images/01-02.jpg'],
+    [
+      'assets/images/st_images/01-01.jpg',
+      'assets/images/st_images/01-02.jpg',
+      'assets/images/st_images/01-03.jpg'
+    ],
     ['assets/images/st_images/02-01.jpg', 'assets/images/st_images/02-02.jpg'],
   ];
 
@@ -75,6 +80,20 @@ class _StateDetailsState extends State<StateDetails> {
     }
   ];
 
+  Widget buildImage(String urlImage, int index) {
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      child: Container(
+        color: Colors.grey,
+        margin: EdgeInsets.all(8),
+        child: Image.asset(
+          urlImage,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
   Map data = {};
   @override
   Widget build(BuildContext context) {
@@ -82,8 +101,8 @@ class _StateDetailsState extends State<StateDetails> {
     var sidx = data['index']; // string format index
     var idx = int.parse(data['index']);
     idx -= 1;
-    print(sidx);
-    print('\n --- $idx');
+    //print(sidx);
+    //print('\n --- $idx');
     return Scaffold(
       appBar: AppBar(
         title: Text(data['state']),
@@ -93,10 +112,14 @@ class _StateDetailsState extends State<StateDetails> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                child: Image.asset('assets/images/st_images/$sidx-01.jpg'),
-              ),
+              CarouselSlider.builder(
+                  itemCount: stImages[idx].length,
+                  itemBuilder: (context, index, realIndex) {
+                    print('no of images : ${stImages[idx].length}');
+                    final urlImage = stImages[idx][index];
+                    return buildImage(urlImage, index);
+                  },
+                  options: CarouselOptions(height: 300)),
               SizedBox(
                 height: 10,
               ),
@@ -112,3 +135,6 @@ class _StateDetailsState extends State<StateDetails> {
     );
   }
 }
+
+
+ // Image.asset('assets/images/st_images/$sidx-01.jpg'),
